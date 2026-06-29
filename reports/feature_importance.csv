@@ -1,0 +1,16 @@
+feature,importance
+has_past_due,0.22857804112933547
+total_past_due_events,0.19199453508986805
+RevolvingUtilizationOfUnsecuredLines,0.18019954800139382
+high_credit_utilization,0.1315487341905644
+NumberOfTimes90DaysLate,0.07658403288194696
+NumberOfTime30-59DaysPastDueNotWorse,0.06737107222293817
+NumberOfTime60-89DaysPastDueNotWorse,0.04204458826923687
+age,0.021291833069245158
+age_band,0.017288013148527057
+DebtRatio,0.010821492597243226
+NumberOfOpenCreditLinesAndLoans,0.009265551071715025
+NumberRealEstateLoansOrLines,0.008609294717450335
+estimated_monthly_debt,0.007118291641243382
+MonthlyIncome,0.0060799459864201875
+NumberOfDependents,0.0012050259828719902

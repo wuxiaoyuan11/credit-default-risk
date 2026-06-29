@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+.venv/
+.cache/
+.kaggle/
+__pycache__/
+*.pyc
+
+# Kaggle/raw data and generated model artifacts should not be committed by default.
+data/raw/*.csv
+data/raw/*.zip
+data/raw/*.xls
+data/processed/*.csv
+reports/models/

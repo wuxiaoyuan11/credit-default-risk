@@ -1,0 +1,3 @@
+model,role,auc,ks,auc_gap_vs_champion,ks_gap_vs_champion
+woe_logistic_scorecard,Traditional interpretable benchmark,0.8262015616433108,0.5192117046195015,-0.04215416094519919,-0.0634527273528982
+hist_gradient_boosting,Machine learning champion,0.86835572258851,0.5826644319723997,0.0,0.0

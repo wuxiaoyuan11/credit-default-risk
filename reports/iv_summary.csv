@@ -1,0 +1,22 @@
+feature,iv,predictive_power
+total_past_due_events,1.4428016774371932,Suspiciously strong
+has_past_due,1.1670851047088238,Suspiciously strong
+credit_utilization,1.0568388827519866,Suspiciously strong
+RevolvingUtilizationOfUnsecuredLines,1.0568388827519866,Suspiciously strong
+NumberOfTimes90DaysLate,0.8844730146543522,Suspiciously strong
+NumberOfTime30-59DaysPastDueNotWorse,0.7470443213588371,Suspiciously strong
+high_credit_utilization,0.7349826387758777,Suspiciously strong
+NumberOfTime60-89DaysPastDueNotWorse,0.6023411480855585,Suspiciously strong
+age,0.23795142498555116,Medium
+age_band,0.21966896565234012,Medium
+MonthlyIncome,0.06937856406919518,Weak
+NumberRealEstateLoansOrLines,0.06375806781192772,Weak
+income_band,0.06246929505560953,Weak
+debt_to_income_ratio,0.061217001974658056,Weak
+payment_burden_proxy,0.061217001974658056,Weak
+DebtRatio,0.061217001974658056,Weak
+NumberOfOpenCreditLinesAndLoans,0.049371347107421915,Weak
+NumberOfDependents,0.03646717032725661,Weak
+estimated_monthly_debt,0.009614940268411589,Not useful
+monthly_income_missing,0.008323825788158067,Not useful
+dependents_missing,0.00420907154781238,Not useful

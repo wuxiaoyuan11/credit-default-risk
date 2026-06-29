@@ -1,0 +1,9 @@
+feature,woe_feature,coefficient
+MonthlyIncome,MonthlyIncome_woe,-0.07556686554053356
+income_band,income_band_woe,-0.10441299501682064
+NumberOfOpenCreditLinesAndLoans,NumberOfOpenCreditLinesAndLoans_woe,-0.12302635202307163
+age,age_woe,-0.4043345095373394
+credit_utilization,credit_utilization_woe,-0.5965811955813618
+NumberRealEstateLoansOrLines,NumberRealEstateLoansOrLines_woe,-0.6855148066792344
+debt_to_income_ratio,debt_to_income_ratio_woe,-0.7520037097779526
+total_past_due_events,total_past_due_events_woe,-0.7900921103406465

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Credit Default Risk Model Dashboard</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #5d6875;
+      --line: #dce1e7;
+      --accent: #1f6f8b;
+      --accent-2: #b64e3c;
+      --good: #26734d;
+      --warn: #9a6515;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+    header { background: #101820; color: white; padding: 28px 36px; }
+    header h1 { margin: 0 0 8px; font-size: 30px; letter-spacing: 0; }
+    header p { margin: 0; max-width: 980px; color: #d8dee6; line-height: 1.5; }
+    main { max-width: 1220px; margin: 0 auto; padding: 26px 22px 48px; }
+    section { margin-bottom: 22px; }
+    h2 { font-size: 18px; margin: 0 0 12px; }
+    h3 { font-size: 15px; margin: 0 0 8px; }
+    p { color: var(--muted); line-height: 1.55; }
+    .grid { display: grid; gap: 16px; }
+    .kpis { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: 1.1fr 0.9fr 0.9fr; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+    .kpi .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    .kpi .value { font-size: 27px; font-weight: 750; margin-top: 8px; }
+    .kpi .note { color: var(--muted); font-size: 12px; margin-top: 6px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 9px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: #344054; font-size: 12px; background: #f2f4f7; }
+    .figure { width: 100%; display: block; border: 1px solid var(--line); border-radius: 6px; background: white; }
+    .callout { border-left: 4px solid var(--accent); background: #eef7fb; padding: 12px 14px; border-radius: 6px; color: #214252; }
+    .risk-zone { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .zone { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: white; }
+    .zone strong { display: block; margin-bottom: 6px; }
+    .tag { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; background: #e8eef5; color: #344054; }
+    ul { margin: 8px 0 0 20px; color: var(--muted); line-height: 1.5; }
+    @media (max-width: 900px) { .kpis, .two, .three, .risk-zone { grid-template-columns: 1fr; } header { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Credit Default Risk Model Dashboard</h1>
+    <p>Borrower-level credit risk model for predicting serious delinquency within two years. The dashboard summarizes model performance, risk concentration, scorecard benchmark results, calibration, explainability, and approval-threshold trade-offs.</p>
+  </header>
+  <main>
+    <section class="grid kpis">
+      <div class="card kpi"><div class="label">Champion Model</div><div class="value">HGB</div><div class="note">Hist Gradient Boosting</div></div>
+      <div class="card kpi"><div class="label">AUC</div><div class="value">0.868</div><div class="note">Champion model</div></div>
+      <div class="card kpi"><div class="label">KS</div><div class="value">0.583</div><div class="note">Good/bad separation</div></div>
+      <div class="card kpi"><div class="label">Top Decile Lift</div><div class="value">5.52x</div><div class="note">vs. portfolio default rate</div></div>
+      <div class="card kpi"><div class="label">Top 10% Bad Capture</div><div class="value">55.21%</div><div class="note">Observed defaulters captured</div></div>
+    </section>
+
+    <section class="card">
+      <h2>Executive Takeaway</h2>
+      <div class="callout">The machine learning model ranks credit risk effectively: the highest-risk 10% of borrowers contain 55.21% of all observed defaulters. A WOE logistic scorecard benchmark is less predictive but more transparent, making the project useful for discussing the trade-off between model power and credit policy interpretability.</div>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Model Comparison</h2>
+        <table><thead><tr><th>Model</th><th>AUC</th><th>KS</th></tr></thead><tbody>
+          <tr><td>hist_gradient_boosting</td><td>0.8684</td><td>0.5827</td></tr>
+<tr><td>random_forest</td><td>0.8642</td><td>0.5823</td></tr>
+<tr><td>logistic_regression</td><td>0.8632</td><td>0.5716</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <h2>WOE Logistic Scorecard vs ML Champion</h2>
+        <table><thead><tr><th>Model</th><th>Role</th><th>AUC</th><th>KS</th></tr></thead><tbody>
+          <tr><td>woe_logistic_scorecard</td><td>Traditional interpretable benchmark</td><td>0.8262</td><td>0.5192</td></tr>
+<tr><td>hist_gradient_boosting</td><td>Machine learning champion</td><td>0.8684</td><td>0.5827</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Risk Ranking: Decile Lift</h2>
+        <img class="figure" src="../reports/figures/12_default_rate_by_decile.png" alt="Default rate by risk decile" />
+      </div>
+      <div class="card">
+        <h2>Cumulative Gains</h2>
+        <img class="figure" src="../reports/figures/13_cumulative_gains.png" alt="Cumulative gains chart" />
+      </div>
+    </section>
+
+    <section class="grid three">
+      <div class="card">
+        <h2>High-Risk Concentration</h2>
+        <table><thead><tr><th>Risk Segment</th><th>Default Rate</th><th>Cumulative Bad Capture</th><th>Lift</th></tr></thead><tbody>
+          <tr><td>Top 10%</td><td>36.90%</td><td>55.21%</td><td>5.52x</td></tr>
+          <tr><td>Top 20%</td><td>-</td><td>73.32%</td><td>3.67x</td></tr>
+          <tr><td>Top 30%</td><td>-</td><td>83.34%</td><td>2.78x</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <h2>Scorecard Scaling</h2>
+        <p><span class="tag">Base score: 600</span> <span class="tag">PDO: 50</span></p>
+        <p>Higher score means lower predicted default risk. Test score range: <strong>384</strong> to <strong>706</strong>.</p>
+      </div>
+      <div class="card">
+        <h2>Policy Use</h2>
+        <ul><li>Route highest-risk decile to manual review.</li><li>Use scorecard as interpretable benchmark.</li><li>Use champion model for stronger risk ranking.</li></ul>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>SHAP Risk Drivers</h2>
+        <img class="figure" src="../reports/figures/16_shap_summary.png" alt="SHAP summary" />
+      </div>
+      <div class="card">
+        <h2>Information Value</h2>
+        <img class="figure" src="../reports/figures/14_information_value.png" alt="Information value chart" />
+      </div>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Calibration</h2>
+        <img class="figure" src="../reports/figures/15_calibration_plot.png" alt="Calibration plot" />
+      </div>
+      <div class="card">
+        <h2>Scorecard Score Distribution</h2>
+        <img class="figure" src="../reports/figures/18_scorecard_score_distribution.png" alt="Scorecard score distribution" />
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Approval Threshold Trade-off</h2>
+      <table><thead><tr><th>Threshold</th><th>Approval Rate</th><th>Rejection Rate</th><th>Approved Default Rate</th><th>Bad Capture Rate</th></tr></thead><tbody>
+        <tr><td>0.3</td><td>94.25%</td><td>5.75%</td><td>4.28%</td><td>39.65%</td></tr>
+<tr><td>0.5</td><td>97.87%</td><td>2.13%</td><td>5.52%</td><td>19.10%</td></tr>
+<tr><td>0.7</td><td>99.76%</td><td>0.24%</td><td>6.52%</td><td>2.64%</td></tr>
+      </tbody></table>
+      <div class="risk-zone" style="margin-top:14px;">
+        <div class="zone"><strong>Low Risk</strong><span>Auto-approve borrowers with low predicted risk.</span></div>
+        <div class="zone"><strong>Medium Risk</strong><span>Route to manual review or request additional verification.</span></div>
+        <div class="zone"><strong>High Risk</strong><span>Reject, reduce exposure, or apply stronger terms.</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Project Deliverables</h2>
+      <p>Primary report: <strong>reports/portfolio_credit_risk_report.md</strong> or <strong>reports/risk_model_report.md</strong>. Reproducible pipeline: <strong>src/train_credit_default.py</strong>. Scorecard outputs and model diagnostics are stored in <strong>reports/</strong>.</p>
+    </section>
+  </main>
+</body>
+</html>
