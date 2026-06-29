@@ -4,8 +4,6 @@ This project builds an end-to-end credit default risk modeling workflow using th
 
 The project covers risk exploration, feature engineering, model comparison, a WOE logistic scorecard benchmark, model explainability, score calibration, decile/lift analysis, WOE/IV screening, and approval-threshold analysis.
 
-**Interactive dashboard:** [Credit Default Risk Dashboard](https://credit-default-risk-3hhnmuynvxyr4z5yamarft.streamlit.app/)
-
 ## Business Objective
 
 Credit lenders need to assess borrower risk before issuing loans or credit lines. A useful model should not only predict default risk, but also help answer business questions such as:
