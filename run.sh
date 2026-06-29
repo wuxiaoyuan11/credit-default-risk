@@ -12,4 +12,4 @@ fi
 .venv/bin/python src/train_credit_default.py
 
 echo "Pipeline complete."
-echo "Open dashboard/index.html to view the portfolio dashboard."
+echo "Run '.venv/bin/streamlit run app.py' to view the interactive dashboard."

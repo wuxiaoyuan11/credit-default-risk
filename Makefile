@@ -8,7 +8,7 @@ run:
 	.venv/bin/python src/train_credit_default.py
 
 dashboard:
-	open dashboard/index.html
+	.venv/bin/streamlit run app.py
 
 streamlit:
 	.venv/bin/streamlit run app.py

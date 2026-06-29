@@ -58,17 +58,14 @@ Main fields:
 credit-default-risk/
   app.py                         # Interactive Streamlit dashboard
   data/
-    raw/                         # Raw Kaggle files
-    processed/                   # Cleaned modeling dataset
-  notebooks/
-    01_credit_default_prediction_risk_explainability.ipynb
+    raw/README.md                # Raw data access note; raw Kaggle files are not committed
   reports/
     figures/                     # EDA and model diagnostic plots
-    models/                      # Trained model artifacts
-    business_decision_report.md
+    README.md                    # Explanation of report artifacts
+    portfolio_credit_risk_report.md
     model_metrics.csv
     threshold_business_decisions.csv
-    risk_segments.csv
+    scorecard_*.csv
   src/
     train_credit_default.py      # Reproducible modeling pipeline
   requirements.txt
@@ -306,19 +303,13 @@ Business interpretation:
 ## Key Outputs
 
 ```text
-dashboard/index.html
+app.py
+reports/README.md
 reports/portfolio_credit_risk_report.md
-reports/risk_model_report.md
 reports/model_metrics.csv
-reports/business_decision_report.md
 reports/threshold_business_decisions.csv
-reports/risk_segments.csv
-reports/permutation_importance.csv
 reports/scorecard_benchmark_report.md
 reports/scorecard_vs_ml_comparison.csv
-reports/scorecard_selected_features.csv
-reports/scorecard_woe_bins.csv
-reports/scorecard_coefficients.csv
 reports/scorecard_points.csv
 reports/scorecard_scaling_params.csv
 reports/scorecard_test_scores.csv
@@ -332,19 +323,11 @@ reports/figures/
 
 ## Dashboard
 
-A static portfolio dashboard is available at:
+Interactive dashboard:
 
-```text
-dashboard/index.html
-```
+[Credit Default Risk Dashboard](https://credit-default-risk11.streamlit.app)
 
-An interactive Streamlit dashboard is available via:
-
-```bash
-streamlit run app.py
-```
-
-The dashboards summarize:
+The dashboard summarizes:
 
 - champion model AUC / KS
 - top-decile lift and bad capture rate
@@ -377,13 +360,7 @@ pip install -r requirements.txt
 python src/train_credit_default.py
 ```
 
-Open the portfolio dashboard:
-
-```text
-dashboard/index.html
-```
-
-Or run the interactive Streamlit app:
+Run the interactive Streamlit app locally:
 
 ```bash
 source .venv/bin/activate

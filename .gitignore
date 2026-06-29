@@ -13,3 +13,6 @@ data/raw/*.zip
 data/raw/*.xls
 data/processed/*.csv
 reports/models/
+reports/business_decision_report.md
+reports/risk_model_report.md
+reports/model_summary.txt
