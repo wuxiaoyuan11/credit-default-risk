@@ -5,6 +5,7 @@
 .kaggle/
 __pycache__/
 *.pyc
+notebooks/*.ipynb
 
 # Kaggle/raw data and generated model artifacts should not be committed by default.
 data/raw/*.csv
